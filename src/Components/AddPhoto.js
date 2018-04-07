@@ -23,6 +23,8 @@ class AddPhoto extends Component {
         }
     }
 
+    
+
     render(){
         return (
             <div>
