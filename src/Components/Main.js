@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Title from './Title'
 import PhotoWall from './PhotoWall'
 import AddPhoto from './AddPhoto'
+import {Route} from 'react-router-dom'
 
 
 class Main extends Component {
@@ -23,12 +24,12 @@ class Main extends Component {
                 id: "2",
                 description: "On a vacation!",
                 imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-                }],
-            screen: "photos" //addPhoto
+                }]
+            // screen: "photos" //addPhoto
         }
 
         this.removePhoto = this.removePhoto.bind(this);
-        this.navigate = this.navigate.bind(this);
+        // this.navigate = this.navigate.bind(this);
 
         
     }
@@ -41,11 +42,19 @@ class Main extends Component {
         }) )
     }
 
-    navigate() {
-        this.setState({
-            screen: "addPhoto"
-        })
+    addPhoto(postSubmitted) {
+
+        this.setState(state => ({
+            posts: state.posts.concat([postSubmitted])
+        }))
     }
+
+
+    // navigate() {
+    //     this.setState({
+    //         screen: "addPhoto"
+    //     })
+    // }
 
     // componentDidMount() {
     //     const data = SimulateFetchFromDatabase()
@@ -55,26 +64,28 @@ class Main extends Component {
     // }
     
     render(){
-        return <div>
+        return (<div>
 
-                    {
-                        this.state.screen === "photos" && (
-                            <div>
-                                <Title title={'Photowall'}/>
-                                <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
-                            </div>
-                        )
-                    }
-
-                    {
-                        this.state.screen === "addPhoto" && (
+                    <Route exact path="/" render={() => (
                         <div>
-                            <AddPhoto/>
+                            <Title title={'Photowall'}/>
+                            <PhotoWall posts={this.state.posts} onRemovePhoto={this.removePhoto} onNavigate={this.navigate}/>
                         </div>
-                        )
-                    }
+                    )}/>
+
+                    {/* <Route path="/AddPhoto" component= {AddPhoto}/> */}
+
+                    <Route path="/AddPhoto" render={({history}) => (
+                        <div>
+                            <AddPhoto onAddPhoto={(addedPost) => {
+                                this.addPhoto(addedPost);
+                                history.push('/');
+                            }}/>
+                        </div>
+                    )}/>
                     
                </div>
+        )
     }
 }
 
