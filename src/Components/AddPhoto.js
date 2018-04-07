@@ -23,12 +23,11 @@ class AddPhoto extends Component {
         }
     }
 
-    
+
 
     render(){
         return (
             <div>
-                {/* <h1>Photowall</h1> */}
                 <Title title={'Photowall'}/>
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>

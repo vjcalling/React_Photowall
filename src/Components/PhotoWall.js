@@ -5,9 +5,6 @@ import {Link} from 'react-router-dom'
 
 function PhotoWall(props){
     return <div>
-
-                {/* <button className="addIcon" onClick={props.onNavigate}>  </button>     */}
-                {/* <a className="addIcon" onClick={props.onNavigate} href="#AddPhoto"></a> */}
                 <Link className="addIcon" to="/AddPhoto"></Link>
                 <div className="photoGrid"> 
                         {props.posts
@@ -21,16 +18,6 @@ function PhotoWall(props){
 
 PhotoWall.propTypes = {
     posts: PropTypes.array.isRequired,
-    onRemovePhoto: PropTypes.func.isRequired
 }
-
-// class PhotoWall extends Component {
-
-//     render(){
-//         return <div className="photoGrid"> 
-//             {this.props.posts.map((post, index) => <Photo key={index} post={post}/>)}
-//         </div>
-//     }
-// }
 
 export default PhotoWall;

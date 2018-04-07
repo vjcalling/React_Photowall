@@ -1,29 +1,15 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import Main from './Components/Main'
+// import Main from './Components/Main'
 import './styles/stylesheet.css'
 import {BrowserRouter} from 'react-router-dom'
+import {createStore} from 'redux'
+import rootReducer from './redux/reducer'
+import {Provider} from 'react-redux'
+import App from './Components/App'
 
-//------------------------------------------------------------------------------
 
-/*const element = React.createElement('ol',null, 
-    tasks.map((task, index) => React.createElement('li', {key: index}, task))
-);*/
-
-//------------------------------------------------------------------------------
-
-//doing it the JSX way
-/*const element = 
-<div>
-    <h1>Task List </h1>
-    <ol> 
-        {tasks.map((task, index) => <li key={index}> {task} </li>)}
-    </ol>
-</div>
-*/
-//------------------------------------------------------------------------------
-
-// ReactDom.render(element,document.getElementById('root'));
-ReactDom.render(<BrowserRouter><Main/></BrowserRouter>,document.getElementById('root'));
+const store = createStore(rootReducer)
+ReactDom.render(<Provider store = {store}><BrowserRouter><App/></BrowserRouter></Provider>,document.getElementById('root'));
 
 //------------------------------------------------------------------------------
