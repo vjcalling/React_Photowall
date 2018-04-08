@@ -19,7 +19,8 @@ class AddPhoto extends Component {
         }
 
         if(imageLink && description) {
-            this.props.onAddPhoto(post);
+            this.props.addPost(post)
+            this.props.history.push('/')
         }
     }
 
@@ -28,7 +29,7 @@ class AddPhoto extends Component {
     render(){
         return (
             <div>
-                <Title title={'Photowall'}/>
+                {/* <Title title={'Photowall'}/> */}
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder="Link" name="link" />

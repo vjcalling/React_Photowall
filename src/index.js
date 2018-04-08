@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-// import Main from './Components/Main'
 import './styles/stylesheet.css'
 import {BrowserRouter} from 'react-router-dom'
 import {createStore} from 'redux'
