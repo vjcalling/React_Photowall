@@ -1,4 +1,4 @@
-//remove
+//remove post
 export function removePost(index) {
     console.log(index);
     return {
@@ -7,7 +7,9 @@ export function removePost(index) {
     }
 }
 
-//add
+//-----------------------------------------------
+
+//add post
 export function addPost(post) {
 
     return {
@@ -15,3 +17,17 @@ export function addPost(post) {
         post: post
     }
 }
+
+//-----------------------------------------------
+
+//add comment
+export function addComment(comment) {
+
+    return {
+        type: "ADD_COMMENT",
+        comment: comment
+    }
+}
+
+//-----------------------------------------------
+

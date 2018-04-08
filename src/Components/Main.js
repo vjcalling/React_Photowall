@@ -4,6 +4,7 @@ import PhotoWall from './PhotoWall'
 import AddPhoto from './AddPhoto'
 import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import Single from './Single'
 
 
 class Main extends Component {
@@ -20,7 +21,6 @@ class Main extends Component {
                     </h1>
                     <Route exact path="/" render={() => (
                         <div>
-                            {/* <Title title={'Photowall'}/> */}
                             <PhotoWall {...this.props} />
                         </div>
                     )}/>
@@ -32,6 +32,13 @@ class Main extends Component {
                             <AddPhoto {...this.props}/>
                         </div>
                     )}/> }
+
+                    <Route exact path="/single/:id" render={(params) => (
+                        <div>
+                            <Single {...this.props} {...params} />
+                        </div>
+                    )}/>
+
                     
                </div>
         )
