@@ -21,11 +21,12 @@ export function addPost(post) {
 //-----------------------------------------------
 
 //add comment
-export function addComment(comment) {
+export function addComment(comment, postId) {
 
     return {
         type: "ADD_COMMENT",
-        comment: comment
+        comment: comment,
+        postId: postId
     }
 }
 
